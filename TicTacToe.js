@@ -40,9 +40,12 @@ function changePlayers(){
 
 function mouseReleased(){
   for(i = 0; i < 9; i++){
-    tile[i].isClicked(mouseX, mouseY, i);
+    tile[i].isClicked(mouseX, mouseY, i)
+    }
+    if(tile[0].player === tile[1].player && tile[1].player === tile[2].player){
+      console.log(tile[0].player +" wins");
+    }
   }
-}
 
 function tileCoordinates(){
   for(var y = 0; y < 3; y++){
@@ -67,10 +70,11 @@ function tileConstructor(leftX, rightX, leftY, rightY){
   this.isClicked = function(mouseX, mouseY, i){
     if(mouseX > this.leftX && mouseX < this.rightX && mouseY > this.leftY && mouseY < this.rightY){
       console.log("mouse X is " + mouseX + "mouse Y is " + mouseY);
-      console.log("clicked on box " + i);
       console.log(currentPlayer);
+      this.player = currentPlayer;
+      console.log("current player is " + this.player + "clicked on box" + i) ;
       changePlayers();
-      text(currentPlayer,this.leftX + 25, this.leftY + 170);
+      text(this.player,this.leftX + 25, this.leftY + 170);
     }
   }
 }
