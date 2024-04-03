@@ -45,6 +45,12 @@ function mouseReleased(){
     if(tile[0].player === tile[1].player && tile[1].player === tile[2].player){
       console.log(tile[0].player +" wins");
     }
+    if(tile[3].player === tile[4].player && tile[4].player === tile[5].player){
+      console.log(tile[3].player +" wins");
+    }
+    if(tile[6].player === tile[7].player && tile[7].player === tile[8].player){
+      console.log(tile[6].player +" wins");
+    } 
   }
 
 function tileCoordinates(){
