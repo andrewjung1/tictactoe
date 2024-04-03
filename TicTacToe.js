@@ -42,15 +42,17 @@ function mouseReleased(){
   for(i = 0; i < 9; i++){
     tile[i].isClicked(mouseX, mouseY, i)
     }
-    if(tile[0].player === tile[1].player && tile[1].player === tile[2].player){
+    if(tile[0].player === tile[1].player && tile[1].player === tile[2].player && tile[0].player != undefined){
       console.log(tile[0].player +" wins");
     }
-    if(tile[3].player === tile[4].player && tile[4].player === tile[5].player){
+    if(tile[3].player === tile[4].player && tile[4].player === tile[5].player && tile[3].player != undefined){
       console.log(tile[3].player +" wins");
     }
-    if(tile[6].player === tile[7].player && tile[7].player === tile[8].player){
+    if(tile[6].player === tile[7].player && tile[7].player === tile[8].player && tile[6].player != undefined){
       console.log(tile[6].player +" wins");
     } 
+
+
   }
 
 function tileCoordinates(){
@@ -67,6 +69,7 @@ function tileConstructor(leftX, rightX, leftY, rightY){
   this.rightX = rightX;
   this.leftY = leftY;
   this.rightY = rightY;
+  this.player = undefined;
   this.width = function(){
     return this.rightX - this.leftX;
   }
@@ -74,7 +77,7 @@ function tileConstructor(leftX, rightX, leftY, rightY){
     return this.rightY - this.leftY;
   }
   this.isClicked = function(mouseX, mouseY, i){
-    if(mouseX > this.leftX && mouseX < this.rightX && mouseY > this.leftY && mouseY < this.rightY){
+    if(mouseX > this.leftX && mouseX < this.rightX && mouseY > this.leftY && mouseY < this.rightY && this.player === undefined){
       console.log("mouse X is " + mouseX + "mouse Y is " + mouseY);
       console.log(currentPlayer);
       this.player = currentPlayer;
