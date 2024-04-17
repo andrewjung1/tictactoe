@@ -67,7 +67,7 @@ function mouseReleased(){
     //   console.log(tile[2].player +" wins");
     // } 
     //if(tileClickedOn <= 2){
-      if(tile[tileClickedOn].player === tile[tileClickedOn + 4].player && tile[tileClickedOn].player === tile[tileClickedOn].player){
+      if(tile[tileClickedOn].player === tile[tileClickedOn + 3].player && tile[tileClickedOn + 3].player === tile[tileClickedOn + 6].player){
         console.log(tile[tileClickedOn].player + " wins");
       }
      else if(tileClickedOn > 2){
