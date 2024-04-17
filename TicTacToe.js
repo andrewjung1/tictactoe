@@ -17,6 +17,8 @@ var tile0 = {
   rightY: 200
 }
 
+var tileClickedOn;
+
 function draw(){
   board();
   tileCoordinates();
@@ -40,17 +42,37 @@ function changePlayers(){
 
 function mouseReleased(){
   for(i = 0; i < 9; i++){
-    tile[i].isClicked(mouseX, mouseY, i)
+    if(tile[i].isClicked(mouseX, mouseY, i)){
+      tileClickedOn = i;
+      console.log(tileClickedOn);
     }
-    if(tile[0].player === tile[1].player && tile[1].player === tile[2].player && tile[0].player != undefined){
-      console.log(tile[0].player +" wins");
+   // console.log(tile[i].isClicked(mouseX, mouseY, i));
     }
-    if(tile[3].player === tile[4].player && tile[4].player === tile[5].player && tile[3].player != undefined){
-      console.log(tile[3].player +" wins");
+    // if(tile[0].player === tile[1].player && tile[1].player === tile[2].player && tile[0].player != undefined){
+    //   console.log(tile[0].player +" wins");
+    // }
+    // if(tile[3].player === tile[4].player && tile[4].player === tile[5].player && tile[3].player != undefined){
+    //   console.log(tile[3].player +" wins");
+    // }
+    // if(tile[6].player === tile[7].player && tile[7].player === tile[8].player && tile[6].player != undefined){
+    //   console.log(tile[6].player +" wins");
+    // } 
+    // if(tile[0].player === tile[3].player && tile[3].player === tile[6].player && tile[0].player != undefined){
+    //   console.log(tile[0].player +" wins");
+    // } 
+    // if(tile[1].player === tile[4].player && tile[4].player === tile[7].player && tile[1].player != undefined){
+    //   console.log(tile[1].player +" wins");
+    // } 
+    // if(tile[2].player === tile[5].player && tile[5].player === tile[8].player && tile[2].player != undefined){
+    //   console.log(tile[2].player +" wins");
+    // } 
+    //if(tileClickedOn <= 2){
+      if(tile[tileClickedOn].player === tile[tileClickedOn + 4].player && tile[tileClickedOn].player === tile[tileClickedOn].player){
+        console.log(tile[tileClickedOn].player + " wins");
+      }
+     else if(tileClickedOn > 2){
+      tileClickedOn -= 3;
     }
-    if(tile[6].player === tile[7].player && tile[7].player === tile[8].player && tile[6].player != undefined){
-      console.log(tile[6].player +" wins");
-    } 
 
 
   }
@@ -84,6 +106,9 @@ function tileConstructor(leftX, rightX, leftY, rightY){
       console.log("current player is " + this.player + "clicked on box" + i) ;
       changePlayers();
       text(this.player,this.leftX + 25, this.leftY + 170);
+      return true;
+    } else {
+      return false;
     }
   }
 }
